@@ -49,8 +49,8 @@ define('TQE_TEMPLATES_DIR', realpath(dirname(__FILE__) . '/templates'));
 //To determine if WP error
 define('WP_OPTION_ERROR', 1024);
 
-//Main path like http://domain.com/wp-content/plugins/tiny-quick-email.
-define('ROOT_URL_PATH', get_bloginfo('url') . '/wp-content/plugins/tiny-quick-email');
+//Main path like http://domain.com/wp-content/plugins/tiny-quick-e-mail.
+define('ROOT_URL_PATH', get_bloginfo('url') . '/wp-content/plugins/tiny-quick-e-mail');
 
 //AJAX request url.
 define('AJAX_URL', get_bloginfo('url') . '/wp-admin/?ajax');

@@ -9,7 +9,7 @@ Plugin that enables you to send e-mails quickly from your wordpress.
 
 == Description ==
 
-Plugin that enables you to send e-mails quickly from your wordpress. You can create categories, sort your users and each admin on your blog can have its own address book with its own settings.
+Plugin that enables you to send e-mails quickly from your wordpress. You can create categories, sort your users and each admin on your blog can have its own address book with its own settings. If you have problem with this plugin, go to `wp-admin/error.log` and send it to me.
 
 == Changelog ==
 

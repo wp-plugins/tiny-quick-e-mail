@@ -19,7 +19,7 @@ Plugin that enables you to send e-mails quickly from your wordpress. You can cre
 
 == Installation ==
 
-1. Upload folder `tiny-quick-email` to your `/wp-content/plugins` directory
+1. Upload folder `tiny-quick-e-mail` to your `/wp-content/plugins` directory
 2. Activate the plugin through the `Plugins` menu in WordPress
 
 == Frequently Asked Questions ==

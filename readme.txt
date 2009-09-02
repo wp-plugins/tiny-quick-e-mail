@@ -58,7 +58,7 @@ Plugin that enables you to send e-mails quickly from your wordpress. You can cre
 
 == Source SVN ==
 
-* svn checkout http://svn.wp-plugins.org/tiny-quick-email/trunk/ tiny-quick-email
+* svn checkout http://svn.wp-plugins.org/tiny-quick-e-mail/trunk/ tiny-quick-e-mail
 
 == Support ==
 

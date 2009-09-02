@@ -6,7 +6,7 @@
 
 /*
     Plugin Name: Tiny Quick E-mail
-    Plugin URI: http://php4every1.com/scripts/tiny-quick-email-wp-plugin/
+    Plugin URI: http://php4every1.com/scripts/tiny-quick-email-wordpress-plugin/
     Description: Plugin that enables you to send e-mails quickly from your wordpress. You can create categories, sort your users and each admin on your blog can have its own address book with its own settings.
     Version: 0.8.30
     Author: Marijan Šuflaj

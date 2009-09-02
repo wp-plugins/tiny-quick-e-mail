@@ -64,4 +64,4 @@ Plugin that enables you to send e-mails quickly from your wordpress. You can cre
 
 * Twitter: http://www.twitter.com/php4every1
 * Facebook: http://www.new.facebook.com/profile.php?id=1296304925&ref=mf
-* Plugin home: http://php4every1.com/scripts/tiny-quick-email-wp-plugin/
+* Plugin home: http://php4every1.com/scripts/tiny-quick-email-wordpress-plugin/

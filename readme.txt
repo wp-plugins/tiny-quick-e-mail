@@ -1,4 +1,4 @@
-=== Tiny Table Of Contents - TinyTOC ===
+=== Tiny Quick E-mail ===
 Contributors: zlikavac32
 Tags: e-mail, mail, tiny, quick, ajax, user, send, message, dashboard
 Requires at least: 2.0.2

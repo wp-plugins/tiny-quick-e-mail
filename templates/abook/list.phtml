@@ -1,0 +1,143 @@
+<?php
+
+//Disable direct view.
+if (!defined('IN_PLUGIN'))
+    die('You can not access this file directly.');
+
+if (isset($this->_data->count) && $this->_data->count < 1) :
+?>
+<table>
+    <tbody>
+        <tr>
+            <td>
+                You do not have any contact in your address book. Click <a href="<?php echo AJAX_URL; ?>&class=Tqe_Ajax_Abook&action=add" id="addContactTqe">here</a> to create one.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<?php else : ?>
+<div class="tablenav">
+    <div class="tablenav-pages"><?php echo $this->_data->displaying; ?></div>
+</div>
+<table class="widefat listTable">
+    <thead>
+        <tr>
+            <th class="check-column"><input type="checkbox" class="tqeSelectAll" /></th>
+            <th width="20%">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'firstName',
+                    'desc'      => (retGet('order') === 'firstName' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">First name</a>
+                <?php if (retGet('order') === 'firstName') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th width="20%">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'middleName',
+                    'desc'      => (retGet('order') === 'middleName' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Middle name</a>
+                <?php if (retGet('order') === 'middleName') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th width="20%">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'lastName',
+                    'desc'      => (retGet('order') === 'lastName' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Last name</a>
+                <?php if (retGet('order') === 'lastName') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th width="20%">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'category',
+                    'desc'      => (retGet('order') === 'category' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Category</a>
+                <?php if (retGet('order') === 'category') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th style="width: 100px;" class="alignCenter">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->_data->result as $result) : ?>
+        <tr>
+            <td><input type="checkbox" class="tqeSelect" value="<?php echo $result->id; ?>" /></td>
+            <td><?php echo $result->firstName; ?></td>
+            <td><?php echo $result->middleName; ?></td>
+            <td><?php echo $result->lastName; ?></td>
+            <td><?php echo $result->catName; ?></td>
+            <td class="alignCenter">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'action' => 'view',
+                    'id'     => $result->id
+                ))); ?>" class="tqeLink">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/male_user_info.png">
+                </a>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'action' => 'edit',
+                    'id'     => $result->id
+                ))); ?>" class="tqeLink">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/edit_male_user.png">
+                </a>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'action' => 'del',
+                    'id'     => $result->id
+                ))); ?>" class="tqeLink">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/remove_male_user.png">
+                </a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="check-column"><input type="checkbox" class="tqeSelectAll" /></th>
+            <th>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'firstName',
+                    'desc'      => (retGet('order') === 'firstName' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">First name</a>
+                <?php if (retGet('order') === 'firstName') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'middleName',
+                    'desc'      => (retGet('order') === 'middleName' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Middle name</a>
+                <?php if (retGet('order') === 'middleName') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'lastName',
+                    'desc'      => (retGet('order') === 'lastName' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Last name</a>
+                <?php if (retGet('order') === 'lastName') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'category',
+                    'desc'      => (retGet('order') === 'category' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Category</a>
+                <?php if (retGet('order') === 'category') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th class="alignCenter">Actions</th>
+        </tr>
+    </tfoot>
+</table>
+<?php if ($this->_data->pagin) : ?>
+<div id="tqePagin" class="tablenav">
+    <div class="tablenav-pages"><?php echo $this->_data->pagin; ?></div>
+</div>
+<?php endif; endif; ?>

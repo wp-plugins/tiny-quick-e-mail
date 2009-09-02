@@ -1,0 +1,23 @@
+<?php
+
+//Disable direct view.
+if (!defined('IN_PLUGIN'))
+    die('You can not access this file directly.');
+
+?>
+<table>
+    <tbody>
+        <tr>
+            <td class="extendTdWidth"><label for="categoryName" class="paddingTop">Category name:</label></td>
+            <td><input type="text" class="fullWidth" id="categoryName" name="categoryName" value="<?php echo $this->_data->result->name; ?>" /></td>
+        </tr>
+        <tr class="clear">
+            <td colspan="2">
+                <p class="submit" style="float: left; padding-left: 0px;">
+                    <input type="hidden" id="id" name="id" value="<?php echo $this->_data->result->id; ?>" />
+                    <input type="button" name="tqeEditCategory" id="tqeEditCategory" value="Save category" />
+                </p>
+            </td>
+        </tr>
+    </tbody>
+</table>

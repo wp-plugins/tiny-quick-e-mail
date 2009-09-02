@@ -1,0 +1,26 @@
+<?php
+
+//Disable direct view.
+if (!defined('IN_PLUGIN'))
+    die('You can not access this file directly.');
+
+?>
+<table>
+    <tbody>
+        <tr>
+            <td class="extendTdWidth">Category name:</td>
+            <td><?php echo $this->_data->info->name; ?></td>
+        </tr>
+        <tr>
+            <td class="extendTdWidth">Contacts count:</td>
+            <td>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'action' => 'list',
+                    'cond'   => array(
+                        'category' => $this->_data->info->id
+                    )
+                ))); ?>" class="tqeLink"><?php echo $this->_data->info->count; ?></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

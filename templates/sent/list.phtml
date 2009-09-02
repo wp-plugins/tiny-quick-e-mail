@@ -1,0 +1,115 @@
+<?php
+
+//Disable direct view.
+if (!defined('IN_PLUGIN'))
+    die('You can not access this file directly.');
+
+$template = new Tqe_Template(TQE_TEMPLATES_DIR, $this->_data);
+
+if (isset($this->_data->count) && $this->_data->count < 1) :
+?>
+<table>
+    <tbody>
+        <tr>
+            <td>
+                You do not have any sent e-mails in your history.
+            </td>
+        </tr>
+    </tbody>
+</table>
+<?php else : ?>
+<div class="tablenav">
+    <div class="tablenav-pages"><?php echo $this->_data->displaying; ?></div>
+</div>
+<table class="widefat listTable">
+    <thead>
+        <tr>
+            <th class="check-column"><input type="checkbox" class="tqeSelectAll" /></th>
+            <th width="20%">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'subject',
+                    'desc'      => (retGet('order') === 'subject' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Subject</a>
+                <?php if (retGet('order') === 'subject') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th>
+                Message
+            </th>
+            <th width="25%">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'date',
+                    'desc'      => (retGet('order') === 'date' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Sent on</a>
+                <?php if (retGet('order') === 'date') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th style="width: 60px;" class="alignCenter">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->_data->result as $result) : ?>
+        <tr>
+            <td><input type="checkbox" class="tqeSelect" value="<?php echo $result->id; ?>" /></td>
+            <td><?php echo Tqe_Helpers::getShort($result->subject); ?></td>
+            <td><?php echo Tqe_Helpers::getShort($result->message, 50); ?></td>
+            <td>
+                <?php echo date_i18n(Tqe_Config::getWpConfig('date_format'), $result->date); ?>
+                in
+                <?php echo date_i18n(Tqe_Config::getWpConfig('time_format'), $result->date); ?>
+            </td>
+            <td class="alignCenter">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'action' => 'view',
+                    'id'     => $result->id
+                ))); ?>" class="tqeLink">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/mail_info.png">
+                </a>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'action' => 'del',
+                    'id'     => $result->id
+                ))); ?>" class="tqeLink">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/mail_delete.png">
+                </a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="check-column"><input type="checkbox" class="tqeSelectAll" /></th>
+            <th width="20%">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'subject',
+                    'desc'      => (retGet('order') === 'subject' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Subject</a>
+                <?php if (retGet('order') === 'subject') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th>
+                Message
+            </th>
+            <th width="25%">
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'order'     => 'date',
+                    'desc'      => (retGet('order') === 'date' && retGet('desc') !== 'true') ? 'true' : ''
+                ))); ?>" class="tqeLink">Sent on</a>
+                <?php if (retGet('order') === 'date') : ?>
+                &nbsp;<img src="<?php echo ROOT_URL_PATH; ?>/img/triangle_<?php echo (retGet('desc') === 'true') ? 'down' : 'up'; ?>.png" alt="Order">
+                <?php endif; ?>
+            </th>
+            <th style="width: 60px;" class="alignCenter">Actions</th>
+        </tr>
+    </tfoot>
+</table>
+<?php if ($this->_data->pagin) : ?>
+<div id="tqePagin" class="tablenav">
+    <div class="tablenav-pages"><?php echo $this->_data->pagin; ?></div>
+</div>
+<?php endif; endif; ?>
+<div class="alignRight marginTop5">
+    <?php $template->assignFile('misc/nav.phtml')->render(); ?>
+</div>

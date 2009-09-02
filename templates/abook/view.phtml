@@ -1,0 +1,31 @@
+<?php
+
+//Disable direct view.
+if (!defined('IN_PLUGIN'))
+    die('You can not access this file directly.');
+
+?>
+<table>
+    <tbody>
+        <tr>
+            <td class="extendTdWidth">First name:</td>
+            <td><?php echo $this->_data->info->firstName; ?></td>
+        </tr>
+        <tr>
+            <td class="extendTdWidth">Middle name:</td>
+            <td><?php echo $this->_data->info->middleName; ?></td>
+        </tr>
+        <tr>
+            <td class="extendTdWidth">Last name:</td>
+            <td><?php echo $this->_data->info->lastName; ?></td>
+        </tr>
+        <tr>
+            <td class="extendTdWidth">E-mail:</td>
+            <td><?php echo $this->_data->info->email; ?></td>
+        </tr>
+        <tr>
+            <td class="extendTdWidth">Category:</td>
+            <td><?php echo $this->_data->info->category; ?></td>
+        </tr>
+    </tbody>
+</table>

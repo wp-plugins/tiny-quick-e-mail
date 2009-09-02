@@ -1,0 +1,40 @@
+<?php
+
+//Disable direct view.
+if (!defined('IN_PLUGIN'))
+    die('You can not access this file directly.');
+
+?>
+<div class="wrap" id="tinyQeWrapper">
+    <h3>Tiny Quick E-mail uninstall</h3>
+
+    <table>
+        <tbody>
+            <tr class="listTable hidden center" id="loader">
+                <td>
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/ajax-loader.gif" />
+                </td>
+            </tr>
+            <tr class="listTable hidden" id="messagesReport">
+                <td>
+                    <p></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    To uninstall this plugins just click on `Uninstall`. By uninstalling this plugin you remove all address book contacts and saved e-mails that you have in your database.<br />
+    After you click uninstall, you <b>can not</b> restore what you've deleted. Make sure that you have backup of tables `*qe_abook`, `*qe_mails`, `*qe_cats` and `*qe_settings` where `*` is table prefix
+    (default `wp_`). <br />
+    When tables are removed from database, go to `Plugins` and uninstall it from there as well.
+
+    <p class="submit">
+        <input type="button" name="uninstallTQE" class="button-primary" id="uninstallTQE" value="Uninstall" />
+    </p>
+</div>
+<script type="text/javascript">
+jQuery(document).ready(function()
+{
+    jQuery.tinyQE.variables.ajaxUrl  = '<?php echo AJAX_URL; ?>';
+});
+</script>

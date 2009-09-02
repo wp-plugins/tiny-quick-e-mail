@@ -1,0 +1,33 @@
+<?php
+//Disable direct view.
+if (!defined('IN_PLUGIN'))
+    die('You can not access this file directly.');
+?>
+
+                <?php if (!empty($this->_data->prevUrl)) : ?>
+                <a href="<?php echo $this->_data->prevUrl; ?>" class="tqeLink" title="Back">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/back.png" alt="Back" />
+                </a>
+                <?php endif; ?>
+                <a href="<?php echo $this->_data->currUrl; ?>" class="tqeLink" title="Refresh">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/refresh.png" alt="Refresh" />
+                </a>
+                <?php if (!empty($this->_data->nextUrl)) : ?>
+                <a href="<?php echo $this->_data->nextUrl; ?>" class="tqeLink" title="Next">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/next.png" alt="Back" />
+                </a>
+                <?php endif; ?>
+                <?php if (retGet('action') === 'list' && retGet('class') === 'Tqe_Ajax_Trash') : ?>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'action' => 'restore'
+                ))); ?>" class="tqeNavAllAction" title="Restore selected">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/mail_previous.png" alt="Restore selected" />
+                </a>
+                <?php endif; ?>
+                <?php if (retGet('action') === 'list' || retGet('action') === 'listCat') : ?>
+                <a href="<?php echo Tqe_Helpers::makeUrl(AJAX_URL, array_merge($this->_data->urlArgs, array(
+                    'action' => (retGet('action') === 'list') ? 'del' : 'delCat'
+                ))); ?>" class="tqeNavAllAction" title="Delete selected">
+                    <img src="<?php echo ROOT_URL_PATH; ?>/img/delete.png" alt="Delete selected" />
+                </a>
+                <?php endif; ?>
